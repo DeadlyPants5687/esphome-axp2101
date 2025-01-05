@@ -429,6 +429,7 @@ void AXP2101Component::UpdateBrightness()
       case AXP2101_M5CORE2:
       {
 	ESP_LOGD(TAG, "Actually setting backlight brightness.");
+	PMU.setBLDO1Voltage(100);
         uint8_t buf = Read8bit( 0x27 );
         Write1Byte( 0x27 , ((buf & 0x80) | (ubri << 3)) );
         break;
